@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JD Building Material Shop | अरारी badaura, चकिया, चंदौली</title>
+    <meta name="description" content="JD Building Material Shop - 100 फीट पूरा तौल गारंटी! Quality cement, bricks, steel, tiles - अरारी badaura, चकिया, चंदौली. Call 8299685762">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#f57c00;--primary-dark:#e65100;--primary-light:#fff3e0;
+            --secondary:#455a64;--dark:#1a2332;--darker:#0f1720;
+            --light:#fafafa;--grey:#78909c;--white:#ffffff;
+            --shadow:0 4px 24px rgba(0,0,0,0.08);
+            --shadow-lg:0 12px 40px rgba(0,0,0,0.15);
+            --radius:14px;
+        }
+        body{font-family:'Poppins','Noto Sans Devanagari',sans-serif;color:var(--dark);background:var(--light);overflow-x:hidden;line-height:1.6}
+        a{text-decoration:none;color:inherit}
+        .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+        .top-bar{background:var(--darker);color:var(--white);padding:10px 0;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.05)}
+        .top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+        .top-bar a{color:var(--white);transition:color .3s}
+        .top-bar a:hover{color:var(--primary)}
+        .top-bar-left,.top-bar-right{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+        .top-bar-left i,.top-bar-right i{color:var(--primary);margin-right:5px}
+
+        .header{background:var(--white);box-shadow:var(--shadow);position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+        .header.scrolled{box-shadow:0 2px 30px rgba(0,0,0,0.12)}
+        .header .container{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+        .logo{display:flex;align-items:center;gap:12px}
+        .logo-icon{width:50px;height:50px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--white);box-shadow:0 4px 15px rgba(245,124,0,0.3)}
+        .logo-text h1{font-size:19px;font-weight:800;line-height:1.2;color:var(--dark)}
+        .logo-text span{font-size:11px;color:var(--grey);font-weight:500;letter-spacing:.3px}
+
+        .nav{display:flex;align-items:center;gap:4px}
+        .nav a{padding:8px 15px;border-radius:8px;font-weight:500;font-size:14px;transition:all .3s;white-space:nowrap}
+        .nav a:hover,.nav a.active{background:var(--primary);color:var(--white)}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;font-weight:600;font-size:14px;transition:all .3s;cursor:pointer;border:none;font-family:inherit}
+        .btn-primary{background:var(--primary);color:var(--white)}
+        .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(245,124,0,0.35)}
+        .btn-outline{background:transparent;color:var(--white);border:2px solid var(--white)}
+        .btn-outline:hover{background:var(--white);color:var(--dark)}
+        .btn-green{background:#25d366;color:var(--white)}
+        .btn-green:hover{background:#128c7e;transform:translateY(-2px)}
+        .nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--dark);padding:8px}
+
+        .mobile-menu{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:2000;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+        .mobile-menu.active{display:flex}
+        .mobile-menu a{color:var(--white);font-size:22px;padding:14px 30px;font-weight:600;transition:color .3s}
+        .mobile-menu a:hover{color:var(--primary)}
+        .mobile-menu-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--white);font-size:30px;cursor:pointer}
+
+        .hero{background:linear-gradient(135deg,rgba(15,23,32,0.92),rgba(26,35,50,0.85)),url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600') center/cover no-repeat;min-height:620px;display:flex;align-items:center;color:var(--white);position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-40%;right:-15%;width:550px;height:550px;background:rgba(245,124,0,0.1);border-radius:50%;animation:heroFloat 7s ease-in-out infinite}
+        .hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:400px;height:400px;background:rgba(245,124,0,0.06);border-radius:50%;animation:heroFloat 9s ease-in-out infinite reverse}
+        @keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-25px)}}
+        .hero-content{max-width:680px;position:relative;z-index:1}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,124,0,0.2);border:1px solid rgba(245,124,0,0.4);color:var(--primary);padding:8px 18px;border-radius:30px;font-size:13px;font-weight:600;margin-bottom:22px;backdrop-filter:blur(10px)}
+        .hero-badge i{font-size:16px}
+        .hero h2{font-size:46px;font-weight:900;line-height:1.15;margin-bottom:18px;letter-spacing:-.5px}
+        .hero h2 .highlight{color:var(--primary);position:relative;display:inline-block}
+        .hero p{font-size:17px;opacity:.85;margin-bottom:30px;line-height:1.7;max-width:560px}
+        .hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+
+        .tally-banner{background:linear-gradient(135deg,#ff6f00,#ff8f00);color:var(--white);position:relative;overflow:hidden}
+        .tally-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+        .tally-banner .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;padding:28px 20px;position:relative;z-index:1}
+        .tally-left{display:flex;align-items:center;gap:20px;flex:1;min-width:280px}
+        .tally-icon{width:80px;height:80px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0;backdrop-filter:blur(5px);border:2px solid rgba(255,255,255,0.3)}
+        .tally-text h3{font-size:24px;font-weight:800;margin-bottom:4px;line-height:1.3}
+        .tally-text p{font-size:14px;opacity:.9;line-height:1.5;max-width:550px}
+        .tally-right{flex-shrink:0}
+        .tally-right .btn{background:var(--white);color:var(--primary-dark);font-weight:700;padding:14px 30px;font-size:15px;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
+        .tally-right .btn:hover{transform:translateY(-2px) scale(1.02)}
+
+        .stats-wrap{margin-top:-45px;position:relative;z-index:10;padding:0 20px}
+        .stats-bar{background:var(--white);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow-lg)}
+        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+        .stat-item h3{font-size:38px;font-weight:900;color:var(--primary);margin-bottom:3px}
+        .stat-item p{color:var(--grey);font-size:13px;font-weight:500}
+
+        .section{padding:80px 0}
+        .section-header{text-align:center;margin-bottom:50px}
+        .section-header h2{font-size:34px;font-weight:800;color:var(--dark);margin-bottom:12px;letter-spacing:-.3px}
+        .section-header p{color:var(--grey);font-size:15px;max-width:580px;margin:0 auto}
+        .section-tag{display:inline-block;background:var(--primary-light);color:var(--primary);padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:1.5px}
+
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+        .about-image{position:relative;border-radius:20px;overflow:hidden;height:460px;box-shadow:var(--shadow-lg)}
+        .about-image img{width:100%;height:100%;object-fit:cover}
+        .about-exp-badge{position:absolute;bottom:20px;left:20px;background:var(--primary);color:var(--white);padding:18px 22px;border-radius:14px;text-align:center;box-shadow:0 8px 25px rgba(245,124,0,0.4)}
+        .about-exp-badge h3{font-size:34px;font-weight:900;line-height:1}
+        .about-exp-badge p{font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+        .about-content h3{font-size:28px;font-weight:700;margin-bottom:18px;color:var(--dark);line-height:1.3}
+        .about-content>p{color:var(--grey);margin-bottom:18px;font-size:15px}
+        .about-features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+        .about-feature{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--light);border-radius:10px;transition:all .3s}
+        .about-feature:hover{background:var(--primary-light);transform:translateX(4px)}
+        .about-feature i{color:var(--primary);font-size:18px;flex-shrink:0}
+        .about-feature span{font-weight:500;font-size:14px}
+
+        .tally-why{background:var(--white)}
+        .tally-compare{display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:900px;margin:0 auto}
+        .compare-card{border-radius:16px;padding:35px;position:relative;overflow:hidden}
+        .compare-bad{background:#fff5f5;border:2px solid #ffcdd2}
+        .compare-good{background:#f0fff4;border:2px solid #a5d6a7}
+        .compare-card h3{font-size:20px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+        .compare-bad h3{color:#c62828}
+        .compare-good h3{color:#2e7d32}
+        .compare-card ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+        .compare-card ul li{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.5}
+        .compare-bad ul li{color:#555}
+        .compare-good ul li{color:#333;font-weight:500}
+        .compare-bad ul li i{color:#e53935;margin-top:4px;flex-shrink:0}
+        .compare-good ul li i{color:#43a047;margin-top:4px;flex-shrink:0}
+        .compare-tag{position:absolute;top:15px;right:-30px;background:#c62828;color:#fff;font-size:10px;font-weight:700;padding:4px 40px;transform:rotate(45deg);text-transform:uppercase;letter-spacing:1px}
+        .compare-good .compare-tag{background:#2e7d32;right:-28px}
+
+        .products-section{background:var(--light)}
+        .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
+        .product-card{background:var(--white);border-radius:16px;padding:28px 22px;text-align:center;transition:all .3s;border:2px solid transparent;cursor:pointer}
+        .product-card:hover{border-color:var(--primary);transform:translateY(-6px);box-shadow:0 12px 35px rgba(245,124,0,0.12)}
+        .product-icon{width:68px;height:68px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px;color:var(--white);box-shadow:0 6px 18px rgba(245,124,0,0.25)}
+        .product-card h3{font-size:17px;font-weight:600;margin-bottom:8px;color:var(--dark)}
+        .product-card p{color:var(--grey);font-size:12.5px;line-height:1.5}
+
+        .brands-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px}
+        .brand-card{background:var(--white);border:2px solid #e8e8e8;border-radius:12px;padding:22px 16px;text-align:center;transition:all .3s}
+        .brand-card:hover{border-color:var(--primary);box-shadow:var(--shadow);transform:translateY(-3px)}
+        .brand-card h4{font-size:14px;font-weight:600;color:var(--dark)}
+        .brand-card p{font-size:11px;color:var(--grey);margin-top:4px}
+
+        .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+        .why-card{text-align:center;padding:40px 25px;background:var(--white);border-radius:16px;box-shadow:var(--shadow);transition:all .3s}
+        .why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+        .why-card i{font-size:38px;color:var(--primary);margin-bottom:18px}
+        .why-card h3{font-size:19px;font-weight:600;margin-bottom:10px;color:var(--dark)}
+        .why-card p{color:var(--grey);font-size:14px;line-height:1.6}
+
+        .contact-section{background:linear-gradient(135deg,var(--darker),var(--dark));color:var(--white)}
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+        .contact-info h3{font-size:28px;font-weight:700;margin-bottom:16px}
+        .contact-info>p{color:#b0bec5;margin-bottom:28px;font-size:15px}
+        .contact-item{display:flex;gap:15px;margin-bottom:22px;align-items:flex-start}
+        .contact-item i{width:46px;height:46px;background:var(--primary);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+        .contact-item-text h4{font-size:15px;font-weight:600;margin-bottom:4px}
+        .contact-item-text p{color:#b0bec5;font-size:14px;margin:0;line-height:1.5}
+        .contact-item-text a{color:#b0bec5;transition:color .3s}
+        .contact-item-text a:hover{color:var(--primary)}
+        .contact-buttons{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+        .contact-form{background:var(--white);border-radius:20px;padding:35px;color:var(--dark)}
+        .contact-form h3{font-size:22px;font-weight:700;margin-bottom:22px}
+        .form-group{margin-bottom:18px}
+        .form-group label{display:block;font-weight:500;margin-bottom:7px;font-size:13px;color:var(--dark)}
+        .form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border:2px solid #e0e0e0;border-radius:10px;font-size:14px;font-family:inherit;transition:border-color .3s;outline:none;background:var(--white)}
+        .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--primary)}
+        .form-group textarea{height:110px;resize:vertical}
+        .btn-submit{width:100%;background:var(--primary);color:var(--white);padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:all .3s;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
+        .btn-submit:hover{background:var(--primary-dark);transform:translateY(-1px)}
+
+        .map-section{padding:0}
+        .map-container{width:100%;height:420px}
+        .map-container iframe{width:100%;height:100%;border:none}
+
+        .footer{background:var(--darker);color:var(--white);padding:60px 0 25px}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;margin-bottom:35px}
+        .footer h3{font-size:18px;font-weight:700;margin-bottom:16px}
+        .footer-about p{color:#90a4ae;font-size:14px;line-height:1.7}
+        .footer ul{list-style:none}
+        .footer ul li{margin-bottom:10px}
+        .footer ul li a{color:#90a4ae;font-size:14px;transition:color .3s}
+        .footer ul li a:hover{color:var(--primary)}
+        .footer-contact-info p{color:#90a4ae;font-size:14px;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+        .footer-contact-info i{color:var(--primary);width:16px;text-align:center}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+        .footer-bottom p{color:#546e7a;font-size:12px}
+
+        .whatsapp-float{position:fixed;bottom:28px;right:28px;width:62px;height:62px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:32px;box-shadow:0 4px 24px rgba(37,211,102,0.45);z-index:999;text-decoration:none;transition:all .3s;animation:waPulse 2s infinite}
+        @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+        .whatsapp-float:hover{transform:scale(1.1)}
+
+        .call-float{position:fixed;bottom:100px;right:30px;width:54px;height:54px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:24px;box-shadow:0 4px 20px rgba(245,124,0,0.4);z-index:999;text-decoration:none;transition:all .3s}
+        .call-float:hover{transform:scale(1.1)}
+
+        .fade-in{opacity:0;transform:translateY(30px);transition:all .6s ease}
+        .fade-in.visible{opacity:1;transform:translateY(0)}
+
+        @media(max-width:992px){
+            .nav{display:none}
+            .nav-toggle{display:block}
+            .hero h2{font-size:34px}
+            .stats-grid{grid-template-columns:repeat(2,1fr)}
+            .about-grid,.contact-grid{grid-template-columns:1fr;gap:30px}
+            .about-image{height:340px}
+            .why-grid{grid-template-columns:1fr 1fr}
+            .tally-compare{grid-template-columns:1fr}
+            .footer-grid{grid-template-columns:1fr 1fr}
+        }
+        @media(max-width:576px){
+            .top-bar-left,.top-bar-right{gap:12px;font-size:11px}
+            .hero{min-height:520px;padding-top:30px}
+            .hero h2{font-size:27px}
+            .hero p{font-size:14px}
+            .section-header h2{font-size:26px}
+            .stats-grid{gap:12px}
+            .stat-item h3{font-size:30px}
+            .about-features{grid-template-columns:1fr}
+            .products-grid{grid-template-columns:1fr 1fr}
+            .brands-grid{grid-template-columns:repeat(2,1fr)}
+            .why-grid{grid-template-columns:1fr}
+            .footer-grid{grid-template-columns:1fr}
+            .footer-bottom{flex-direction:column;text-align:center}
+            .contact-buttons{flex-direction:column}
+            .btn{justify-content:center}
+            .tally-banner .container{flex-direction:column;text-align:center}
+            .tally-left{flex-direction:column}
+            .tally-right{width:100%}
+            .tally-right .btn{width:100%}
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+    <div class="container">
+        <div class="top-bar-left">
+            <span><i class="fas fa-phone-alt"></i> <a href="tel:8299685762">8299685762</a></span>
+            <span><i class="fas fa-clock"></i> सुबह 8:00 – शाम 8:00</span>
+        </div>
+        <div class="top-bar-right">
+            <span><i class="fas fa-map-marker-alt"></i> अरारी badaura, चकिया, चंदौली</span>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<header class="header" id="header">
+    <div class="container">
+        <a href="#" class="logo">
+            <div class="logo-icon"><i class="fas fa-building"></i></div>
+            <div class="logo-text">
+                <h1>JD Building Material</h1>
+                <span>100 फीट पूरा तौल गारंटी</span>
+            </div>
+        </a>
+        <nav class="nav" id="mainNav">
+            <a href="#home" class="active">Home</a>
+            <a href="#tally">तौल गारंटी</a>
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+            <a href="tel:8299685762" class="btn btn-primary" style="padding:10px 18px;font-size:13px"><i class="fas fa-phone-alt"></i> Call Now</a>
+        </nav>
+        <button class="nav-toggle" onclick="toggleMobile()"><i class="fas fa-bars"></i></button>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="toggleMobile()"><i class="fas fa-times"></i></button>
+    <a href="#home" onclick="toggleMobile()">Home</a>
+    <a href="#tally" onclick="toggleMobile()">तौल गारंटी</a>
+    <a href="#about" onclick="toggleMobile()">About</a>
+    <a href="#products" onclick="toggleMobile()">Products</a>
+    <a href="#contact" onclick="toggleMobile()">Contact</a>
+    <a href="tel:8299685762" onclick="toggleMobile()">📞 कॉल करें</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-shield-alt"></i> 100 फीट पूरा तौल – कोई कमी नहीं!</div>
+            <h2>बेहतरीन निर्माण सामग्री<br><span class="highlight">सस्ते दाम</span> में</h2>
+            <p>JD Building Material Shop, अरारी badaura – सीमेंट, ईंट, छड़, टाइल्स, पेंट और सभी निर्माण सामग्री। <strong>100 फीट का पूरा तौल</strong> जो बाज़ार में मिलता ही नहीं!</p>
+            <div class="hero-buttons">
+                <a href="tel:8299685762" class="btn btn-primary"><i class="fas fa-phone-alt"></i> अभी कॉल करें</a>
+                <a href="https://wa.me/918299685762?text=नमस्ते%20JD%20Building%20Material%20Shop%20में%20सामग्री%20के%20बारे%20में%20जानकारी%20चाहिए" class="btn btn-green" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#products" class="btn btn-outline"><i class="fas fa-box"></i> Products देखें</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TALLY GUARANTEE BANNER -->
+<div class="tally-banner" id="tally">
+    <div class="container">
+        <div class="tally-left">
+            <div class="tally-icon">⚖️</div>
+            <div class="tally-text">
+                <h3>100 फीट का पूरा तौल – गारंटी!</h3>
+                <p>बाज़ार में लोग 100 फीट के पैसे लेकर सिर्फ 90 फीट देते हैं। हम देते हैं <strong>पूरे 100 फीट</strong> – न कम, न ज़्यादा। यही हमारी पहचान है!</p>
+            </div>
+        </div>
+        <div class="tally-right">
+            <a href="tel:8299685762" class="btn"><i class="fas fa-phone-alt"></i> अभी पुष्टि करें</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats -->
+<div class="stats-wrap">
+    <div class="stats-bar">
+        <div class="stats-grid">
+            <div class="stat-item fade-in"><h3>3+</h3><p>साल का अनुभव</p></div>
+            <div class="stat-item fade-in"><h3>300+</h3><p>खुश ग्राहक</p></div>
+            <div class="stat-item fade-in"><h3>100%</h3><p>पूरा तौल गारंटी</p></div>
+            <div class="stat-item fade-in"><h3>50+</h3><p>ब्रांड्स उपलब्ध</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- Tally Comparison -->
+<section class="section tally-why">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-tag">हमारी ख़ासियत</div>
+            <h2>100 फीट तौल – सच में फर्क है!</h2>
+            <p>जानिए कैसे हम बाकी दुकानों से अलग हैं</p>
+        </div>
+        <div class="tally-compare">
+            <div class="compare-card compare-bad fade-in">
+                <div class="compare-tag">धोखा</div>
+                <h3><i class="fas fa-times-circle"></i> बाकी दुकानें</h3>
+                <ul>
+                    <li><i class="fas fa-arrow-right"></i> 100 फीट के पैसे लेते हैं</li>
+                    <li><i class="fas fa-arrow-right"></i> सिर्फ 85-90 फीट देते हैं</li>
+                    <li><i class="fas fa-arrow-right"></i> तौल में कमी – ग्राहक को पता भी नहीं</li>
+                    <li><i class="fas fa-arrow-right"></i> कोई गारंटी नहीं</li>
+                    <li><i class="fas fa-arrow-right"></i> पैसे बर्बाद, सामग्री कम</li>
+                </ul>
+            </div>
+            <div class="compare-card compare-good fade-in">
+                <div class="compare-tag">गारंटी</div>
+                <h3><i class="fas fa-check-circle"></i> JD Building Material</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> 100 फीट के पैसे लेते हैं</li>
+                    <li><i class="fas fa-check"></i> <strong>पूरे 100 फीट</strong> देते हैं</li>
+                    <li><i class="fas fa-check"></i> आपके सामने तौल – पूरी निष्ठा</li>
+                    <li><i class="fas fa-check"></i> 100% तौल गारंटी</li>
+                    <li><i class="fas fa-check"></i> हर रुपये की वैल्यू मिलती है</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image fade-in">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600" alt="JD Building Material Shop">
+                <div class="about-exp-badge">
+                    <h3>3+</h3>
+                    <p>Years Trust</p>
+                </div>
+            </div>
+            <div class="about-content fade-in">
+                <div class="section-tag">हमारे बारे में</div>
+                <h3>JD Building Material – आपका भरोसेमंद साथी</h3>
+                <p>JD Building Material Shop अरारी badaura, चकिया, चंदौली (PIN – 232118) में स्थित है, हनुमान मंदिर, बिलासपुर के पास। हम 3+ सालों से इस क्षेत्र में सेवा प्रदान कर रहे हैं और 300+ ग्राहकों का भरोसा जीत चुके हैं।</p>
+                <p>हमारी सबसे बड़ी पहचान है – <strong>100 फीट का पूरा तौल</strong>। बाज़ार में जहाँ लोग 90 फीट देकर 100 के पैसे लेते हैं, वहीं हम हर बार पूरा तौल देते हैं। यही वजह है कि ग्राहक बार-बार हमसे ही खरीदते हैं।</p>
+                <div class="about-features">
+                    <div class="about-feature"><i class="fas fa-check-circle"></i><span>100 फीट पूरा तौल</span></div>
+                    <div class="about-feature"><i class="fas fa-check-circle"></i><span>सबसे कम दाम</span></div>
+                    <div class="about-feature"><i class="fas fa-check-circle"></i><span>फ्री होम डिलीवरी</span></div>
+                    <div class="about-feature"><i class="fas fa-check-circle"></i><span>एक्सपर्ट सलाह</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products -->
+<section class="section products-section" id="products">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-tag">हमारे प्रोडक्ट्स</div>
+            <h2>निर्माण सामग्री</h2>
+            <p>घर बनाने से लेकर पूरा करने तक – सब कुछ एक ही जगह</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card fade-in"><div class="product-icon"><i class="fas fa-cube"></i></div><h3>सीमेंट (Cement)</h3><p>Ultratech, Ambuja, ACC, Shree, Birla</p></div>
+            <div class="product-card fade-in"><div class="product-icon"><i class="fas fa-th-large"></i></div><h3>ईंट (Bricks)</h3><p>लाल ईंट, फ्लाई ऐश ब्रिक्स</p></div>
+            <div class="product-card fade-in"><div class="product-icon"><i class="fas fa-bars"></i></div><h3>TMT स्टील बार</h3><p>Tata Tiscon, SAIL, Kamdhenu, Jindal</p></div>
+            <div class="product-card fade-in"><div class="product-icon"><i class="fas fa-border-all"></i></div><h3>टाइल्स (Tiles)</h3><p>फ्लोर, वॉल, बाथरूम टाइल्स</p></div>
+            <div class="product-card fade-in"><div class="product-icon"><i class="fas fa-paint-roller"></i></div><h3>पेंट (Paint)</h3><p>Asian Paints, Berger, Nerolac, Dulux</p></div>
+            <div class="product-card fade-in"><div class="product-icon"><i class="fas fa-water"></i></div><h3>बालू और बजरी</h3><p>रिवर सैंड, बजरी, गिट्टी</p></div>
+            <div class="product-card fade-in"><div class="product-icon"><i class="fas fa-tools"></i></div><h3>हार्डवेयर</h3><p>नट-बोल्ट, पेंच, ताले, कब्जे</p></div>
+            <div class="product-card fade-in"><div class="product-icon"><i class="fas fa-plug"></i></div><h3>इलेक्ट्रिकल</h3><p>वायर, स्विच, फैन, MCB</p></div>
+            <div class="product-card fade-in"><div class="product-icon"><i class="fas fa-tint"></i></div><h3>पाइप और फिटिंग्स</h3><p>PVC, CPVC, GI पाइप</p></div>
+            <div class="product-card fade-in"><div class="product-icon"><i class="fas fa-shield-alt"></i></div><h3>वॉटरप्रूफिंग</h3><p>Dr. Fixit, Sika, Asian Paints</p></div>
+            <div class="product-card fade-in"><div class="product-icon"><i class="fas fa-tree"></i></div><h3>लकड़ी (Timber)</h3><p>दरवाजा, खिड़की, प्लाईवुड</p></div>
+            <div class="product-card fade-in"><div class="product-icon"><i class="fas fa-glass-whiskey"></i></div><h3>ग्लास (Glass)</h3><p>शीशा, टेंपर्ड, एल्युमीनियम</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Brands -->
+<section class="section" id="brands">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-tag">ब्रांड्स</div>
+            <h2>हमारे प्रमुख ब्रांड्स</h2>
+            <p>केवल भरोसेमंद और क्वालिटी ब्रांड्स</p>
+        </div>
+        <div class="brands-grid">
+            <div class="brand-card fade-in"><h4>Ultratech</h4><p>सीमेंट</p></div>
+            <div class="brand-card fade-in"><h4>Tata Steel</h4><p>TMT बार्स</p></div>
+            <div class="brand-card fade-in"><h4>Asian Paints</h4><p>पेंट</p></div>
+            <div class="brand-card fade-in"><h4>Ambuja</h4><p>सीमेंट</p></div>
+            <div class="brand-card fade-in"><h4>ACC</h4><p>सीमेंट</p></div>
+            <div class="brand-card fade-in"><h4>Kajaria</h4><p>टाइल्स</p></div>
+            <div class="brand-card fade-in"><h4>Polycab</h4><p>इलेक्ट्रिकल</p></div>
+            <div class="brand-card fade-in"><h4>Havells</h4><p>फैन, स्विच</p></div>
+            <div class="brand-card fade-in"><h4>Dr. Fixit</h4><p>वॉटरप्रूफिंग</p></div>
+            <div class="brand-card fade-in"><h4>Supreme</h4><p>PVC पाइप</p></div>
+            <div class="brand-card fade-in"><h4>Greenply</h4><p>प्लाईवुड</p></div>
+            <div class="brand-card fade-in"><h4>Godrej</h4><p>ताले</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose -->
+<section class="section" style="background:#f5f5f5">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-tag">क्यों चुनें हमें</div>
+            <h2>हमें क्यों चुनें?</h2>
+            <p>JD Building Material को चुनने के 6 बड़े कारण</p>
+        </div>
+        <div class="why-grid">
+            <div class="why-card fade-in"><i class="fas fa-balance-scale"></i><h3>100 फीट पूरा तौल</h3><p>बाज़ार में सबसे बड़ी समस्या – कम तौल। हम देते हैं पूरा तौल, हर बार!</p></div>
+            <div class="why-card fade-in"><i class="fas fa-medal"></i><h3>गारंटीड क्वालिटी</h3><p>केवल असली ब्रांडेड सामग्री। कोई नकली सामग्री नहीं।</p></div>
+            <div class="why-card fade-in"><i class="fas fa-tags"></i><h3>सबसे कम दाम</h3><p>मार्केट रेट से कम दाम। बड़े ऑर्डर पर और छूट!</p></div>
+            <div class="why-card fade-in"><i class="fas fa-truck"></i><h3>फ्री डिलीवरी</h3><p>अरारी badaaura और आसपास में फ्री होम डिलीवरी।</p></div>
+            <div class="why-card fade-in"><i class="fas fa-user-tie"></i><h3>एक्सपर्ट सलाह</h3><p>कितनी सामग्री लगेगी, कौन सा ब्रांड बेहतर – फ्री सलाह!</p></div>
+            <div class="why-card fade-in"><i class="fas fa-handshake"></i><h3>3+ साल का भरोसा</h3><p>300+ खुश ग्राहक। एक बार आए, हमेशा आएंगे।</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="section contact-section" id="contact">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <div class="section-tag" style="background:rgba(245,124,0,0.2)">संपर्क करें</div>
+                <h3>हमसे संपर्क करें</h3>
+                <p>किसी भी सवाल या ऑर्डर के लिए सीधे कॉल या WhatsApp करें।</p>
+
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-item-text">
+                        <h4>शॉप का पता</h4>
+                        <p>अरारी badaura, चकिया, चंदौली – 232118<br>(हनुमान मंदिर, बिलासपुर के पास)</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="contact-item-text">
+                        <h4>मोबाइल नंबर</h4>
+                        <p><a href="tel:8299685762">8299685762</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div class="contact-item-text">
+                        <h4>खुलने का समय</h4>
+                        <p>सुबह 8:00 बजे – शाम 8:00 बजे<br>सोमवार से शनिवार | रविवार बंद</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-directions"></i>
+                    <div class="contact-item-text">
+                        <h4>लोकेशन</h4>
+                        <p><a href="https://maps.app.goo.gl/6xsf7M611wErteE89?g_st=ac" target="_blank" style="color:var(--primary);font-weight:600">Google Maps पर देखें →</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-buttons">
+                    <a href="tel:8299685762" class="btn btn-primary"><i class="fas fa-phone-alt"></i> कॉल करें</a>
+                    <a href="https://wa.me/918299685762?text=नमस्ते%20JD%20Building%20Material%20Shop%20में%20सामग्री%20के%20बारे%20में%20जानकारी%20चाहिए" class="btn btn-green" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="contact-form fade-in">
+                <h3>📋 अनुरोध भेजें</h3>
+                <form id="contactForm" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label>आपका नाम *</label>
+                        <input type="text" name="name" required placeholder="अपना नाम लिखें">
+                    </div>
+                    <div class="form-group">
+                        <label>मोबाइल नंबर *</label>
+                        <input type="tel" name="phone" required placeholder="मोबाइल नंबर लिखें">
+                    </div>
+                    <div class="form-group">
+                        <label>कौन सी सामग्री चाहिए?</label>
+                        <select name="product">
+                            <option value="">-- चुनें --</option>
+                            <option value="सीमेंट">सीमेंट</option>
+                            <option value="ईंट">ईंट</option>
+                            <option value="स्टील बार">स्टील बार (TMT)</option>
+                            <option value="टाइल्स">टाइल्स</option>
+                            <option value="पेंट">पेंट</option>
+                            <option value="बालू/बजरी">बालू/बजरी</option>
+                            <option value="हार्डवेयर">हार्डवेयर</option>
+                            <option value="इलेक्ट्रिकल">इलेक्ट्रिकल</option>
+                            <option value="पाइप">पाइप</option>
+                            <option value="अन्य">अन्य</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>संदेश</label>
+                        <textarea name="message" placeholder="अपनी ज़रूरत यहाँ लिखें... जैसे: 100 फीट स्टील बार चाहिए"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fab fa-whatsapp"></i> WhatsApp पर भेजें</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map - JD Building Materials साहिबगंज -->
+<section class="map-section">
+    <div class="map-container">
+        <iframe src="https://maps.google.com/maps?q=JD+Building+Materials+%E0%A4%B8%E0%A4%BE%E0%A4%B9%E0%A4%BF%E0%A4%AC%E0%A4%97%E0%A4%82%E0%A4%9C+Chakia+Chandauli&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <h3>JD Building Material Shop</h3>
+                <p>अरारी badaura, चकिया, चंदौली – 232118 में स्थित आपका भरोसेमंद निर्माण सामग्री विक्रेता। <strong>100 फीट पूरा तौल गारंटी</strong> – बाज़ार में अनोखी पहचान। 3+ साल से सेवा में।</p>
+            </div>
+            <div>
+                <h4>क्विक लिंक्स</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#tally">तौल गारंटी</a></li>
+                    <li><a href="#about">हमारे बारे में</a></li>
+                    <li><a href="#products">प्रोडक्ट्स</a></li>
+                    <li><a href="#contact">संपर्क</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>प्रोडक्ट्स</h4>
+                <ul>
+                    <li><a href="#products">सीमेंट</a></li>
+                    <li><a href="#products">ईंट</a></li>
+                    <li><a href="#products">स्टील बार</a></li>
+                    <li><a href="#products">टाइल्स</a></li>
+                    <li><a href="#products">पेंट</a></li>
+                    <li><a href="#products">हार्डवेयर</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact-info">
+                <h4>संपर्क जानकारी</h4>
+                <p><i class="fas fa-map-marker-alt"></i> अरारी badaura, चकिया, चंदौली – 232118</p>
+                <p><i class="fas fa-map-pin"></i> हनुमान मंदिर, बिलासपुर के पास</p>
+                <p><i class="fas fa-phone-alt"></i> <a href="tel:8299685762" style="color:#90a4ae">8299685762</a></p>
+                <p><i class="fas fa-clock"></i> सुबह 8:00 – शाम 8:00</p>
+                <p><i class="fas fa-map"></i> <a href="https://maps.app.goo.gl/6xsf7M611wErteE89?g_st=ac" target="_blank" style="color:var(--primary);font-weight:500">Google Maps लोकेशन →</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 JD Building Material Shop. सर्वाधिकार सुरक्षित।</p>
+            <p>⚖️ 100 फीट पूरा तौल – हमारी गारंटी</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating Buttons -->
+<a href="https://wa.me/918299685762?text=नमस्ते%20JD%20Building%20Material%20Shop%20में%20सामग्री%20के%20बारे%20में%20जानकारी%20चाहिए" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="tel:8299685762" class="call-float"><i class="fas fa-phone-alt"></i></a>
+
+<script>
+function toggleMobile(){document.getElementById('mobileMenu').classList.toggle('active')}
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+
+window.addEventListener('scroll',()=>{document.getElementById('header').classList.toggle('scrolled',window.scrollY>50)});
+
+window.addEventListener('scroll',()=>{
+    const sections=document.querySelectorAll('section[id]');
+    const links=document.querySelectorAll('.nav a[href^="#"]');
+    let cur='';
+    sections.forEach(s=>{if(window.pageYOffset>=s.offsetTop-120)cur=s.getAttribute('id')});
+    links.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+cur)l.classList.add('active')});
+});
+
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+let counterDone=false;
+const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&!counterDone){counterDone=true;document.querySelectorAll('.stat-item h3').forEach(c=>{const target=parseInt(c.textContent);const suffix=c.textContent.replace(/[0-9]/g,'');let cur=0;const inc=target/50;const timer=setInterval(()=>{cur+=inc;if(cur>=target){c.textContent=target+suffix;clearInterval(timer)}else{c.textContent=Math.floor(cur)+suffix}},30)})}})},{threshold:.5});
+counterObs.observe(document.querySelector('.stats-bar'));
+
+function submitForm(e){
+    e.preventDefault();
+    const f=e.target;
+    let msg=`नमस्ते JD Building Material Shop,\n\nनाम: ${f.name.value}\nमोबाइल: ${f.phone.value}`;
+    if(f.product.value)msg+=`\nसामग्री: ${f.product.value}`;
+    if(f.message.value)msg+=`\nसंदेश: ${f.message.value}`;
+    msg+=`\n\nकृपया इस अनुरोध पर ध्यान दें।`;
+    window.open('https://wa.me/918299685762?text='+encodeURIComponent(msg),'_blank');
+    alert('धन्यवाद! WhatsApp पर आपका संदेश भेज दिया गया है।');
+    f.reset();
+}
+</script>
+</body>
+</html>
